@@ -1,18 +1,20 @@
+package lotto.domain;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class LottoNumberGenerator {
+public class LottoTicketMachine {
     private static final int NUMBER_OF_BALLS = 6;
 
-    public static LottoTicket generateOneTicket() {
+    public static LottoTicket issueOneTicket() {
         List<LottoNumber> lottoNumbers = LottoBalls.extractNumbers(NUMBER_OF_BALLS);
         return new LottoTicket(lottoNumbers);
     }
 
-    public static LottoTickets generateTickets(int numberOfTickets) {
+    public static LottoTickets issueTickets(int numberOfTickets) {
         List<LottoTicket> tickets = new ArrayList<>();
         for (int i = 0; i < numberOfTickets; i++) {
-            tickets.add(generateOneTicket());
+            tickets.add(issueOneTicket());
         }
 
         return new LottoTickets(tickets);

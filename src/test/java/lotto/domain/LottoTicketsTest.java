@@ -1,3 +1,5 @@
+package lotto.domain;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,7 +15,7 @@ public class LottoTicketsTest {
     public void setUp() throws Exception {
         //given
         tickets = new ArrayList<>();
-        tickets.add(LottoNumberGenerator.generateOneTicket());
+        tickets.add(LottoTicketMachine.issueOneTicket());
     }
 
     @Test

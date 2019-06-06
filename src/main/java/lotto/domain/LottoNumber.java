@@ -1,3 +1,5 @@
+package lotto.domain;
+
 public class LottoNumber implements Comparable<LottoNumber> {
     private int number;
 

@@ -28,3 +28,14 @@
 ---------------------------------------------------------
 
 #완료
+
+
+#패키지 구조에 대한 고민
+https://www.slipp.net/questions/36
+
+lotto
+    - domain
+    - service
+    - view
+        - console
+        - web

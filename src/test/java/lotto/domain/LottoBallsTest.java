@@ -1,3 +1,5 @@
+package lotto.domain;
+
 import org.junit.Test;
 
 import java.util.List;
