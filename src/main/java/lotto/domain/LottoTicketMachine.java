@@ -19,4 +19,8 @@ public class LottoTicketMachine {
 
         return new LottoTickets(tickets);
     }
+
+    public static LottoTicket issueOneTicket(String[] numbers) {
+        return new LottoTicket(numbers);
+    }
 }

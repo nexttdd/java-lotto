@@ -27,4 +27,11 @@ public class LottoTicketMachineTest {
         //then
         assertThat(lottoTickets.getTickets().size()).isEqualTo(numberOfTickets);
     }
+
+    @Test
+    public void 수동_한장_발급하기() {
+        String[] numbers = {"6", "3", "2", "4", "5", "37"};
+        LottoTicket lottoTicket = LottoTicketMachine.issueOneTicket(numbers);
+        assertThat(lottoTicket.getNumbers().size()).isEqualTo(6);
+    }
 }

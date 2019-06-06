@@ -27,13 +27,13 @@ public class LottoNumber implements Comparable<LottoNumber> {
     @Override
     public int compareTo(LottoNumber o) {
         if (this.number < o.number) {
-            return 1;
+            return -1;
         }
 
         if (this.number == o.number) {
             throw new IllegalArgumentException();
         }
 
-        return -1;
+        return 1;
     }
 }
