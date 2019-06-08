@@ -9,7 +9,7 @@ public class LottoNumber implements Comparable<LottoNumber> {
     }
 
     private boolean checkOutOfRange(int number) {
-        if (!LottoBalls.balls.contains(number)) {
+        if (LottoBalls.MIN_NUMBER > number || LottoBalls.MAX_NUMBER < number) {
             throw new IllegalArgumentException();
         }
         return true;
@@ -30,11 +30,11 @@ public class LottoNumber implements Comparable<LottoNumber> {
             return -1;
         }
 
-        if (this.number == o.number) {
-            throw new IllegalArgumentException();
+        if (this.number > o.number) {
+            return 1;
         }
 
-        return 1;
+        return 0;
     }
 
     public int countMatchNumber(LottoTicket luckyLotto) {

@@ -2,7 +2,10 @@ package lotto.domain;
 
 import org.junit.Test;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -12,7 +15,7 @@ public class LottoBallsTest {
         int idx = 1;
 
         //given, when, then
-        for (Integer ball : LottoBalls.balls) {
+        for (Integer ball : LottoBalls.getBalls()) {
             assertThat(ball).isEqualTo(idx++);
         }
     }
@@ -27,5 +30,12 @@ public class LottoBallsTest {
 
         //then
         assertThat(lottoNumbers.size()).isEqualTo(6);
+    }
+
+    @Test
+    public void 중복검사() {
+        Set<Integer> lottoSet = new HashSet<>(LottoBalls.getBalls());
+
+        assertThat(lottoSet.size()).isEqualTo(LottoBalls.getBallsSize());
     }
 }

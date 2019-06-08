@@ -21,14 +21,14 @@ public class LottoNumberTest {
         LottoNumber lottoNumber = new LottoNumber(46);
     }
 
-    //then
-    @Test(expected = IllegalArgumentException.class)
-    public void 중복된_숫자() {
-        //given
-        LottoNumber lottoNumber = new LottoNumber(3);
-        LottoNumber dupLottoNumber = new LottoNumber(3);
-
-        //when
-        lottoNumber.compareTo(dupLottoNumber);
-    }
+//    //then
+//    @Test(expected = IllegalArgumentException.class)
+//    public void 중복된_숫자() {
+//        //given
+//        LottoNumber lottoNumber = new LottoNumber(3);
+//        LottoNumber dupLottoNumber = new LottoNumber(3);
+//
+//        //when
+//        lottoNumber.compareTo(dupLottoNumber);
+//    }
 }
