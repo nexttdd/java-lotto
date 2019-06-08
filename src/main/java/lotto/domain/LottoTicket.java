@@ -23,6 +23,16 @@ public class LottoTicket {
         return Collections.unmodifiableList(numbers);
     }
 
+    public int matchLuckyNumber(LottoTicket luckyLotto) {
+        int matchCount = 0;
+
+        for (LottoNumber lottoNumber : numbers) {
+            matchCount += lottoNumber.countMatchNumber(luckyLotto);
+        }
+
+        return matchCount;
+    }
+
     @Override
     public String toString() {
         return numbers.toString();

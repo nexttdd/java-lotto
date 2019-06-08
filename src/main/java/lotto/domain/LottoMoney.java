@@ -19,6 +19,10 @@ public class LottoMoney {
         return true;
     }
 
+    public long getMoney() {
+        return money;
+    }
+
     public int getTicketCount() {
         return ticketCount;
     }

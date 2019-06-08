@@ -13,4 +13,14 @@ public class LottoTickets {
     public List<LottoTicket> getTickets() {
         return Collections.unmodifiableList(tickets);
     }
+
+    public Ranks matchLuckyNumber(LottoTicket luckyLotto) {
+        Ranks ranks = new Ranks();
+
+        for (LottoTicket lottoTicket : tickets) {
+            ranks.addMatchTicket(lottoTicket.matchLuckyNumber(luckyLotto));
+        }
+
+        return ranks;
+    }
 }

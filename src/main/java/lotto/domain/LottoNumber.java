@@ -36,4 +36,19 @@ public class LottoNumber implements Comparable<LottoNumber> {
 
         return 1;
     }
+
+    public int countMatchNumber(LottoTicket luckyLotto) {
+
+        for (LottoNumber luckyNumber : luckyLotto.getNumbers()) {
+            if (luckyNumber.isMatch(number)) {
+                return 1;
+            }
+        }
+
+        return 0;
+    }
+
+    private boolean isMatch(int lottoNumber) {
+        return this.number == lottoNumber;
+    }
 }
