@@ -12,11 +12,10 @@ public class LottoMoney {
         ticketCount = (int) (money / TICKET_PRICE);
     }
 
-    private boolean validate(long money) {
+    private void validate(long money) {
         if (money < TICKET_PRICE) {
             throw new IllegalArgumentException();
         }
-        return true;
     }
 
     public long getMoney() {

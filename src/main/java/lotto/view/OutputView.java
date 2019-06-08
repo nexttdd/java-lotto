@@ -10,7 +10,7 @@ public class OutputView {
         System.out.println("---------");
 
         for (LottoTicket lottoTicket : lottoTickets.getTickets()) {
-            System.out.println(lottoTicket.toString());
+            System.out.println(lottoTicket);
         }
         System.out.println();
     }

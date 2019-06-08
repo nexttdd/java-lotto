@@ -1,8 +1,9 @@
 package lotto.domain;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoTicket {
     private List<LottoNumber> numbers;
@@ -12,11 +13,10 @@ public class LottoTicket {
     }
 
     public LottoTicket(String[] ticketNumbers) {
-        numbers = new ArrayList<>();
-
-        for (String number : ticketNumbers) {
-            numbers.add(new LottoNumber(Integer.parseInt(number)));
-        }
+        numbers = Arrays.stream(ticketNumbers)
+                .mapToInt(Integer::parseInt)
+                .mapToObj(LottoNumber::new)
+                .collect(Collectors.toList());
     }
 
     public List<LottoNumber> getNumbers() {

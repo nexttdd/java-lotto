@@ -9,8 +9,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RanksTest {
-    //TODO : rankList 일급 콜랙션
-    //TODO : 수익률 계산 및 저장.
     private List<Rank> rank;
 
     @Before

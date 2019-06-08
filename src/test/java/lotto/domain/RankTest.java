@@ -5,10 +5,6 @@ import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RankTest {
-    //TODO : rank생성결과 확인
-    //TODO : count증가 확인
-
-
     @Test
     public void rank객체_생성() {
         //given
