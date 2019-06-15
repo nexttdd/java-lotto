@@ -3,41 +3,39 @@ package lotto.domain;
 import java.util.*;
 
 public class Ranks {
-    private Map<Integer, Rank> ranks;
+    private Map<Reward, Rank> ranks;
 
     public Ranks() {
         ranks = new HashMap<>();
-
-        Set<Integer> rankNumbers = WinningMoney.winningMoney.keySet();
-        for (Integer rankNumber : rankNumbers) {
-            ranks.put(rankNumber, new Rank(rankNumber));
+        for (Reward reward : Reward.values()) {
+            ranks.put(reward, new Rank(reward));
         }
-
     }
 
     public double calculateProfit(long money) {
         double totalWinningMoney = 0.0;
 
-        for (Integer rankNumber : ranks.keySet()) {
-            totalWinningMoney += ranks.get(rankNumber).calculateWinningMoney();
+        for (Reward reward : ranks.keySet()) {
+            totalWinningMoney += ranks.get(reward).calculateWinningMoney();
         }
 
         return totalWinningMoney / money;
     }
 
-    public void addMatchTicket(int matchCount) {
-
+    public void addMatchTicket(int matchCount, boolean matchBonus) {
         if (matchCount < 3) return;
 
-        if (ranks.containsKey(matchCount)) {
-            ranks.get(matchCount).addTicketCount();
+        Reward reward = Reward.valueOf(matchCount, matchBonus);
+
+        if (ranks.containsKey(reward)) {
+            ranks.get(reward).addTicketCount();
             return;
         }
 
-        ranks.putIfAbsent(matchCount, new Rank(matchCount, 1));
+        throw new IllegalArgumentException("wrong MatchCount");
     }
 
-    public Map<Integer, Rank> getRanks() {
+    public Map<Reward, Rank> getRanks() {
         return ranks;
     }
 }
