@@ -1,0 +1,50 @@
+package lotto.domain;
+
+import java.util.*;
+
+public class LottoBalls {
+    public static final int MAX_NUMBER = 45;
+    public static final int MIN_NUMBER = 1;
+
+    private static final List<Integer> balls;
+
+    static {
+        balls = new ArrayList<>();
+        for (int i = 1; i <= MAX_NUMBER; i++) {
+            balls.add(i);
+        }
+    }
+
+    public static List<LottoNumber> extractNumbers(int numberOfBalls) {
+        shuffle();
+
+        List<LottoNumber> lottoNumbers = new ArrayList<>();
+        for (int i = 0; i < numberOfBalls; i++) {
+            lottoNumbers.add(new LottoNumber(balls.get(i)));
+        }
+        return sort(lottoNumbers);
+    }
+
+    private static void shuffle() {
+        Collections.shuffle(balls);
+    }
+
+    private static List<LottoNumber> sort(List<LottoNumber> lottoNumbers) {
+        Collections.sort(lottoNumbers);
+        return lottoNumbers;
+    }
+
+    public static List<Integer> getBalls() {
+        return Collections.unmodifiableList(balls);
+    }
+
+    public static int getBallsSize() {
+        return balls.size();
+    }
+
+
+    public static boolean isNotContains(int number) {
+        return !balls.contains(number);
+    }
+
+}
