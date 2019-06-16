@@ -8,11 +8,28 @@ public class LottoNumber implements Comparable<LottoNumber> {
         this.number = number;
     }
 
-    private boolean checkOutOfRange(int number) {
+    private void checkOutOfRange(int number) {
         if (LottoBalls.MIN_NUMBER > number || LottoBalls.MAX_NUMBER < number) {
             throw new IllegalArgumentException();
         }
-        return true;
+    }
+
+    public int countMatchNumber(LottoTicket luckyLotto, int matchCount) {
+        boolean isMatch = Boolean.FALSE;
+
+        for (LottoNumber luckyNumber : luckyLotto.getNumbers()) {
+            isMatch = luckyNumber.isMatch(number, isMatch);
+        }
+
+        return Boolean.TRUE == isMatch ? matchCount + 1 : matchCount;
+    }
+
+    private boolean isMatch(int lottoNumber, boolean isMatch) {
+        return Boolean.TRUE == isMatch ? Boolean.TRUE : this.number == lottoNumber;
+    }
+
+    public boolean isBonusNumber(LottoNumber bonusNumber, boolean isBonusMatch) {
+        return Boolean.TRUE == isBonusMatch ? Boolean.TRUE : this.number == bonusNumber.number;
     }
 
     public int getNumber() {
@@ -26,29 +43,7 @@ public class LottoNumber implements Comparable<LottoNumber> {
 
     @Override
     public int compareTo(LottoNumber o) {
-        if (this.number < o.number) {
-            return -1;
-        }
+        return Integer.compare(this.number, o.number);
 
-        if (this.number > o.number) {
-            return 1;
-        }
-
-        return 0;
-    }
-
-    public int countMatchNumber(LottoTicket luckyLotto) {
-
-        for (LottoNumber luckyNumber : luckyLotto.getNumbers()) {
-            if (luckyNumber.isMatch(number)) {
-                return 1;
-            }
-        }
-
-        return 0;
-    }
-
-    private boolean isMatch(int lottoNumber) {
-        return this.number == lottoNumber;
     }
 }

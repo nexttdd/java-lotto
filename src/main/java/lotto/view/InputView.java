@@ -20,6 +20,9 @@ public class InputView {
     public static LottoTicket inputLuckyLotto() {
         System.out.println("지난 주 당첨 번호를 입력해 주세요.");
         String[] luckyNumbers = scanner.nextLine().split(",| ");
-        return new LottoTicket(luckyNumbers);
+
+        System.out.println("보너스 볼을 입력해 주세요.");
+        String bonusBall = scanner.nextLine();
+        return new LottoTicket(luckyNumbers, bonusBall);
     }
 }
