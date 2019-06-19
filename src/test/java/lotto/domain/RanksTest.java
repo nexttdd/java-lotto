@@ -1,40 +1,43 @@
 package lotto.domain;
 
-import org.junit.Before;
 import org.junit.Test;
-
-import java.util.Arrays;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RanksTest {
-    private List<Rank> rank;
-
-    @Before
-    public void setUp() throws Exception {
-        rank = Arrays.asList(
-                new Rank(6,0),
-                new Rank(5,0),
-                new Rank(4,0),
-                new Rank(3,1)
-        );
-    }
-
     @Test
-    public void ranks객체_생성() {
+    public void Ranks객체생성() {
+        //given, when
         Ranks ranks = new Ranks();
+
+        //then
         assertThat(ranks).isNotNull();
     }
 
     @Test
     public void 수익률_계산하기() {
+        //given
         int money = 5_000;
 
+        //when
         Ranks ranks = new Ranks();
-        ranks.addMatchTicket(3);
+        ranks.addMatchTicket(3, Boolean.FALSE);
         double profit = ranks.calculateProfit(money);
 
+        //then
         assertThat(profit).isEqualTo(1.0);
+    }
+
+    @Test
+    public void FIFTH_티켓_추가() {
+        //given
+        Reward reward = Reward.FIFTH;
+        Ranks ranks = new Ranks();
+
+        //when
+        ranks.addMatchTicket(3, Boolean.FALSE);
+
+        //then
+        assertThat(ranks.getRanks().get(reward)).isNotNull();
     }
 }

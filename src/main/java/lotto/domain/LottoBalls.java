@@ -41,10 +41,4 @@ public class LottoBalls {
     public static int getBallsSize() {
         return balls.size();
     }
-
-
-    public static boolean isNotContains(int number) {
-        return !balls.contains(number);
-    }
-
 }

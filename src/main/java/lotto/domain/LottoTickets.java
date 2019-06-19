@@ -18,7 +18,8 @@ public class LottoTickets {
         Ranks ranks = new Ranks();
 
         for (LottoTicket lottoTicket : tickets) {
-            ranks.addMatchTicket(lottoTicket.matchLuckyNumber(luckyLotto));
+            ranks.addMatchTicket(lottoTicket.matchLuckyNumber(luckyLotto),
+                    lottoTicket.matchBonusNumber(luckyLotto));
         }
 
         return ranks;

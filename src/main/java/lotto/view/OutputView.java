@@ -2,13 +2,10 @@ package lotto.view;
 
 import lotto.domain.*;
 
-import java.util.Set;
+import java.util.*;
 
 public class OutputView {
     public static void printTickets(LottoTickets lottoTickets) {
-        System.out.println("\n당첨 통계");
-        System.out.println("---------");
-
         for (LottoTicket lottoTicket : lottoTickets.getTickets()) {
             System.out.println(lottoTicket);
         }
@@ -16,18 +13,27 @@ public class OutputView {
     }
 
     public static void printRanks(Ranks ranks) {
-        Set<Integer> results = ranks.getRanks().keySet();
+        System.out.println("\n당첨 통계");
+        System.out.println("---------");
 
-        for (Integer rank : results) {
-            printRank(ranks.getRanks().get(rank));
+        List<Reward> rewards = Arrays.asList(Reward.values());
+        sortRewardOrdered(rewards);
+
+        for (Reward reward : rewards) {
+            printRank(reward, ranks.getRanks().get(reward));
         }
     }
 
-    private static void printRank(Rank rank) {
-        int matchCount = rank.getMatchCount();
-        int winningMoney = WinningMoney.winningMoney.get(matchCount);
+    private static void printRank(Reward reward, Rank rank) {
+        if (Reward.MISS.equals(reward)) return;
         int ticketCount = rank.getTicketCount();
-        System.out.println(matchCount + "개 일치 (" + winningMoney + "원)- " + ticketCount + "개");
+
+        String result = reward.getMatchCount() + "개 일치";
+        if (Reward.SECOND.equals(reward)) {
+            result += ", 보너스 볼 일치";
+        }
+
+        System.out.println(result + "(" + reward.getWinningMoney() + "원)- " + ticketCount + "개");
     }
 
     public static void printProfit(double profit) {
@@ -38,5 +44,22 @@ public class OutputView {
         }
 
         System.out.println(result);
+    }
+
+    private static void sortRewardOrdered(List<Reward> rewards) {
+        rewards.sort((o1, o2) -> {
+            if (o1.getMatchCount() > o2.getMatchCount()) {
+                return 1;
+            }
+
+            if (o1.getMatchCount() == o2.getMatchCount()) {
+                if (o1.getWinningMoney() > o2.getWinningMoney()) {
+                    return 1;
+                }
+                return -1;
+            }
+
+            return -1;
+        });
     }
 }

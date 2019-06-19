@@ -3,16 +3,11 @@ package lotto.domain;
 public class Rank {
     private static final int MIN_MATCH_COUNT = 3;
 
-    private int matchCount;
+    private Reward reward;
     private int ticketCount;
 
-    public Rank(int matchCount) {
-        this.matchCount = matchCount;
-    }
-
-    public Rank(int matchCount, int ticketCount) {
-        this.matchCount = matchCount;
-        this.ticketCount = ticketCount;
+    public Rank(Reward reward) {
+        this.reward = reward;
     }
 
     public void addTicketCount() {
@@ -22,24 +17,18 @@ public class Rank {
     public int calculateWinningMoney() {
         if(isUnLucky()) return 0;
 
-        return WinningMoney.winningMoney.get(matchCount) * ticketCount;
+        return reward.getWinningMoney() * ticketCount;
+    }
+
+    private boolean isUnLucky() {
+        return reward.getMatchCount() < MIN_MATCH_COUNT;
     }
 
     public int getMatchCount() {
-        return matchCount;
+        return reward.getMatchCount();
     }
 
     public int getTicketCount() {
         return ticketCount;
-    }
-
-    private boolean isUnLucky() {
-        return matchCount < MIN_MATCH_COUNT;
-    }
-
-    public void addTicketCount(int matchCount) {
-        if (this.matchCount == matchCount) {
-            addTicketCount();
-        }
     }
 }
