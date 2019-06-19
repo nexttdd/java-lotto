@@ -10,11 +10,6 @@ public class Rank {
         this.reward = reward;
     }
 
-    public Rank(Reward reward, int ticketCount) {
-        this.reward = reward;
-        this.ticketCount = ticketCount;
-    }
-
     public void addTicketCount() {
         ticketCount++;
     }

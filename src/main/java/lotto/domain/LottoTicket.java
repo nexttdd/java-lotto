@@ -34,8 +34,18 @@ public class LottoTicket {
     }
 
     private void checkArguments(String[] ticketNumbers, String bonusNumber) {
-        if (ticketNumbers.length < 6) throw new IllegalArgumentException("지난주 당첨번호 입력이 잘못됐습니다.");
-        if ("".equals(bonusNumber.trim())) throw new IllegalArgumentException("보너스 볼이 없습니다.");
+        if (ticketNumbers.length < 6) {
+            throw new IllegalArgumentException("지난주 당첨번호 입력이 잘못됐습니다.");
+        }
+
+        if ("".equals(bonusNumber.trim())) {
+            throw new IllegalArgumentException("보너스 볼이 없습니다.");
+        }
+
+        List<String> lottoNumbers = Arrays.asList(ticketNumbers);
+        if (lottoNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException("보너스 번호가 중복됩니다.");
+        }
     }
 
     int matchLuckyNumber(LottoTicket luckyLotto) {

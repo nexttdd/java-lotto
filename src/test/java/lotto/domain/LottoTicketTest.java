@@ -45,4 +45,15 @@ public class LottoTicketTest {
         //then
         assertThat(lottoTicket.isBonusMatch()).isTrue();
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void 당첨번호_보너스번호_중복() {
+        //given
+        String[] luckyNumbers = {"1", "2", "7", "4", "5", "6" };
+        String bonusNumber = "7";
+
+        //when
+        LottoTicket luckyTicket = new LottoTicket(luckyNumbers, bonusNumber);
+    }
+
 }
