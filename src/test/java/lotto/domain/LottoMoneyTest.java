@@ -51,4 +51,12 @@ public class LottoMoneyTest {
         //then
         assertThat(lottoMoney.getAutoTicketCount()).isEqualTo(1);
     }
+
+    @Test
+    public void 수동발급_필요상태확인() {
+        LottoMoney lottoMoney = new LottoMoney(1000);
+        lottoMoney.buyManualTicket(1);
+
+        assertThat(lottoMoney.isNeedManualTicket()).isTrue();
+    }
 }

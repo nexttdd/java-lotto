@@ -5,11 +5,12 @@ import lotto.domain.*;
 import java.util.*;
 
 public class OutputView {
-    public static void printTickets(LottoTickets lottoTickets) {
-        for (LottoTicket lottoTicket : lottoTickets.getTickets()) {
-            System.out.println(lottoTicket);
-        }
-        System.out.println();
+    public static void printTickets(LottoMoney lottoMoney, LottoTickets lottoTickets) {
+        System.out.println("\n수동으로 " + lottoMoney.getManualTicketCount() + "장,"
+                + "자동으로 " + lottoMoney.getAutoTicketCount() + "개를 구매했습니다.");
+
+        lottoTickets.getTickets()
+                .forEach(System.out::println);
     }
 
     public static void printRanks(Ranks ranks) {

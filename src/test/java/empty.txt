@@ -11,11 +11,15 @@
 
 2. 수동으로 입력받은 번호 -> 티켓 생성
     - LottoGameService
+        > lottoTicketMachine 호출 method 인자 수정 (수동입력번호 전달)
     - LottoTicketMachine
-    - LottoTickets
-        > 수동 여러장 구매 method
-        > 자동구매 method
         > 복합 method
+            > 수동 여러장 구매 method
+            > 자동구매 method
+    - LottoTickets
+        > List<LottoTicket> 추가하는 allAll method 추가
+
+
 
 
 

@@ -37,4 +37,8 @@ public class LottoMoney {
     public int getManualTicketCount() {
         return manualTicketCount;
     }
+
+    public boolean isNeedManualTicket() {
+        return this.manualTicketCount > 0;
+    }
 }
