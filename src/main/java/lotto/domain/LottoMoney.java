@@ -23,7 +23,9 @@ public class LottoMoney {
     }
 
     private void checkOutOfRange(int ticketCount) {
-        if (money / TICKET_PRICE < ticketCount) throw new IllegalArgumentException("구매가능 장수 초과");
+        if (money / TICKET_PRICE < ticketCount) {
+            throw new IllegalArgumentException("구매할 수 있는 로또 티켓 수를 초과했습니다.");
+        }
     }
 
     public long getMoney() {

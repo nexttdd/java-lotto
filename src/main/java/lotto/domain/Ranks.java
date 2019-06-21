@@ -14,12 +14,13 @@ public class Ranks {
 
     public double calculateProfit(long money) {
         double totalWinningMoney = 0.0;
+        final double percent = 100.0;
 
         for (Reward reward : ranks.keySet()) {
             totalWinningMoney += ranks.get(reward).calculateWinningMoney();
         }
 
-        return totalWinningMoney / money;
+        return (totalWinningMoney / money) * percent;
     }
 
     public void addMatchTicket(int matchCount, boolean matchBonus) {
