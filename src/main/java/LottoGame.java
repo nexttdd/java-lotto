@@ -11,7 +11,8 @@ public class LottoGame {
 
         Money money = new Money(inputView.purchaseAmount());
 
-        int manualCount = inputView.manualCount();
+        int manualCount = inputView.manualCount(money);
+
         List<Lotto> manualLottos = inputView.manualLottoNumbers(manualCount);
         resultView.printPurchaseTicketCount(manualCount, money.getExceptManualCount(manualCount));
 

@@ -2,6 +2,7 @@ package view;
 
 import vo.Lotto;
 import vo.LottoNumber;
+import vo.Money;
 import vo.WinningLotto;
 
 import java.util.ArrayList;
@@ -15,10 +16,14 @@ public class InputVIew {
         return scanner.next();
     }
 
-    public int manualCount() {
+    public int manualCount(Money money) {
         System.out.println("수동으로 구매할 로또 수를 입력해 주세요.");
         Scanner scanner = new Scanner(System.in);
-        return Integer.parseInt(scanner.next());
+        int availableCount = money.lotteryCount();
+        int manualCount = Integer.parseInt(scanner.next());
+        if(availableCount < manualCount)
+            throw new IllegalArgumentException();
+        return manualCount;
     }
 
     public List<Lotto> manualLottoNumbers(int manualCount) {
