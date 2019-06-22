@@ -18,6 +18,10 @@ public class Money {
         return money / LOTTERY_MONEY;
     }
 
+    public int getExceptManualCount(int manualCount){
+        return lotteryCount() - manualCount;
+    }
+
     public static Money buyingMoney(int countOfLotto) {
         return new Money(countOfLotto * LOTTERY_MONEY);
     }

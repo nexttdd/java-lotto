@@ -15,11 +15,21 @@ public class LottoGenerator {
         return IntStream.range(1, 46).boxed().collect(Collectors.toList());
     }
 
-    public static Lottos generateByMoney(Money money) {
+    public static Lottos generateByMoney(Money money, List<Lotto> manualLottos) {
         List<Lotto> lottos = new ArrayList<>();
-        for (int i = 0; i < money.lotteryCount(); i++) {
+        int manualCount = getManualCount(manualLottos);
+        //수동 로또
+        if(manualCount > 0){
+            lottos.addAll(manualLottos);
+        }
+        //수동 로또 제외한 자동 로또 생성 TODO 서영이한테 효율적인 방법 물어보기
+        for (int i = 0; i < money.getExceptManualCount(manualCount); i++) {
             lottos.add(generateAuto());
         }
         return new Lottos(lottos);
+    }
+
+    private static int getManualCount(List<Lotto> manualLottos) {
+        return manualLottos == null ? 0 : manualLottos.size();
     }
 }
