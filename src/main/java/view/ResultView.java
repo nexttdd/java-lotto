@@ -32,7 +32,7 @@ public class ResultView {
         sb.append(NEWLINE);
     }
 
-    public void printPurchaseTicketCount(int count) {
-        System.out.println(String.format("%s개를 구매했습니다.", count));
+    public void printPurchaseTicketCount(int manualCount, int autoCount) {
+        System.out.println(String.format("수동으로 %d장, 자동으로 %d개를 구매했습니다.", manualCount, autoCount));
     }
 }
