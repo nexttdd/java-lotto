@@ -10,12 +10,12 @@ public class LottoGame {
         ResultView resultView = new ResultView();
 
         Money money = new Money(inputView.purchaseAmount());
-        resultView.printPurchaseTicketCount(money.lotteryCount(), 0);
 
         int manualCount = inputView.manualCount();
         List<Lotto> manualLottos = inputView.manualLottoNumbers(manualCount);
+        resultView.printPurchaseTicketCount(manualCount, money.getExceptManualCount(manualCount));
 
-        Lottos lottos = LottoGenerator.generateByMoney(money);
+        Lottos lottos = LottoGenerator.generateByMoney(money, manualLottos);
         System.out.println(lottos);
 
         WinningLotto winningNumber = inputView.winningNumber();

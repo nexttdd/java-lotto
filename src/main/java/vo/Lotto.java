@@ -31,15 +31,15 @@ public class Lotto {
         return new Lotto(lotto);
     }
 
-    public static Lotto ofComma(String text) {
+    public static Lotto of(String text) {
         if (Objects.isNull(text)) {
             throw new IllegalArgumentException();
         }
-        return new Lotto(splitComma(text));
+        return new Lotto(split(text));
     }
 
-    private static Set<LottoNumber> splitComma(String text) {
-        String[] values = text.split(",");
+    private static Set<LottoNumber> split(String text) {
+        String[] values = text.split(", |,| ");
         Set<LottoNumber> lotto = new TreeSet<>();
         for (String value : values) {
             lotto.add(LottoNumber.of(value));

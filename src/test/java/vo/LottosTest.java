@@ -22,7 +22,7 @@ public class LottosTest {
     @Test
     public void 금액에서_수동구매제외한_자동구매리스트_생성() {
         //Given
-        List<Lotto> manualLottos = Arrays.asList(Lotto.ofComma("1,2,3,4,5,6"));
+        List<Lotto> manualLottos = Arrays.asList(Lotto.of("1,2,3,4,5,6"));
 
         //When
         Lottos lottos = LottoGenerator.generateByMoney(new Money(5_000), manualLottos);
