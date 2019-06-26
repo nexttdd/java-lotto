@@ -4,12 +4,11 @@ public class LottoMoney {
     private static final long TICKET_PRICE = 1_000L;
 
     private long money;
-    private int ticketCount;
+    private int manualTicketCount;
 
     public LottoMoney(long money) {
         validate(money);
         this.money = money;
-        ticketCount = (int) (money / TICKET_PRICE);
     }
 
     private void validate(long money) {
@@ -18,11 +17,34 @@ public class LottoMoney {
         }
     }
 
+    public void buyManualTicket(int manualTicketCount) {
+        checkOutOfRange(manualTicketCount);
+        this.manualTicketCount = manualTicketCount;
+    }
+
+    private void checkOutOfRange(int ticketCount) {
+        if (calcTicketCount() < ticketCount) {
+            throw new IllegalArgumentException("구매할 수 있는 로또 티켓 수를 초과했습니다.");
+        }
+    }
+
     public long getMoney() {
         return money;
     }
 
-    public int getTicketCount() {
-        return ticketCount;
+    public int getAutoTicketCount() {
+        return calcTicketCount() - manualTicketCount;
+    }
+
+    public int getManualTicketCount() {
+        return manualTicketCount;
+    }
+
+    public boolean isNeedManualTicket() {
+        return this.manualTicketCount > 0;
+    }
+
+    private int calcTicketCount() {
+        return (int) (money / TICKET_PRICE);
     }
 }

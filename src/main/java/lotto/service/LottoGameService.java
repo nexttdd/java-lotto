@@ -8,25 +8,25 @@ public class LottoGameService {
     public void run() {
         LottoMoney lottoMoney = InputView.inputMoney();
 
-        LottoTickets lottoTickets = issueTickets(lottoMoney);
+        LottoTickets lottoTickets = issueTickets(lottoMoney, InputView.buyManualTickets(lottoMoney));
 
         LottoTicket luckyLotto = InputView.inputLuckyLotto();
 
         Ranks ranks = matchLuckyNumber(luckyLotto, lottoTickets);
         OutputView.printRanks(ranks);
 
-        double profit = ranks.calculateProfit(lottoMoney.getMoney());
+        String profit = ranks.calculateProfit(lottoMoney.getMoney());
         OutputView.printProfit(profit);
+    }
+
+    private LottoTickets issueTickets(LottoMoney lottoMoney, String[] manualNumbers) {
+        LottoTickets lottoTickets = LottoTicketMachine.issueTickets(lottoMoney, manualNumbers);
+        OutputView.printTickets(lottoMoney, lottoTickets);
+
+        return lottoTickets;
     }
 
     private Ranks matchLuckyNumber(LottoTicket luckyLotto, LottoTickets lottoTickets) {
         return lottoTickets.matchLuckyNumber(luckyLotto);
-    }
-
-    private LottoTickets issueTickets(LottoMoney lottoMoney) {
-        LottoTickets lottoTickets = LottoTicketMachine.issueTickets(lottoMoney.getTicketCount());
-        OutputView.printTickets(lottoTickets);
-
-        return lottoTickets;
     }
 }

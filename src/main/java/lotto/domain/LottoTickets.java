@@ -10,10 +10,6 @@ public class LottoTickets {
         this.tickets = tickets;
     }
 
-    public List<LottoTicket> getTickets() {
-        return Collections.unmodifiableList(tickets);
-    }
-
     public Ranks matchLuckyNumber(LottoTicket luckyLotto) {
         Ranks ranks = new Ranks();
 
@@ -23,5 +19,14 @@ public class LottoTickets {
         }
 
         return ranks;
+    }
+
+    public LottoTickets addAll(LottoTickets tickets) {
+        this.tickets.addAll(tickets.getTickets());
+        return this;
+    }
+
+    public List<LottoTicket> getTickets() {
+        return Collections.unmodifiableList(tickets);
     }
 }

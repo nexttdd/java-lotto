@@ -14,8 +14,10 @@ public class LottoTicketsTest {
     @Before
     public void setUp() throws Exception {
         //given
+        String[] numbers = {"1", "2", "7", "4", "5", "6" };
+
         tickets = new ArrayList<>();
-        tickets.add(LottoTicketMachine.issueOneTicket());
+        tickets.add(new LottoTicket(numbers));
     }
 
     @Test
@@ -25,5 +27,18 @@ public class LottoTicketsTest {
 
         //then
         assertThat(lottoTickets.getTickets().size()).isEqualTo(1);
+    }
+
+    @Test
+    public void 로또티켓_추가하기() {
+        //given
+        LottoTickets lottoTickets = new LottoTickets(tickets);
+        LottoTickets secondTickets = new LottoTickets(tickets);
+
+        //when
+        lottoTickets.addAll(secondTickets);
+
+        //then
+        assertThat(lottoTickets.getTickets().size()).isEqualTo(2);
     }
 }

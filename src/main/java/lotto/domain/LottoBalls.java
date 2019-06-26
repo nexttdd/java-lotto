@@ -1,10 +1,13 @@
 package lotto.domain;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoBalls {
-    public static final int MAX_NUMBER = 45;
-    public static final int MIN_NUMBER = 1;
+    static final int MIN_NUMBER = 1;
+    static final int MAX_NUMBER = 45;
 
     private static final List<Integer> balls;
 
@@ -18,27 +21,17 @@ public class LottoBalls {
     public static List<LottoNumber> extractNumbers(int numberOfBalls) {
         shuffle();
 
-        List<LottoNumber> lottoNumbers = new ArrayList<>();
-        for (int i = 0; i < numberOfBalls; i++) {
-            lottoNumbers.add(new LottoNumber(balls.get(i)));
-        }
-        return sort(lottoNumbers);
+        return balls.subList(0, numberOfBalls).stream()
+                .map(LottoNumber::new)
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     private static void shuffle() {
         Collections.shuffle(balls);
     }
 
-    private static List<LottoNumber> sort(List<LottoNumber> lottoNumbers) {
-        Collections.sort(lottoNumbers);
-        return lottoNumbers;
-    }
-
     public static List<Integer> getBalls() {
         return Collections.unmodifiableList(balls);
-    }
-
-    public static int getBallsSize() {
-        return balls.size();
     }
 }

@@ -12,14 +12,16 @@ public class Ranks {
         }
     }
 
-    public double calculateProfit(long money) {
+    public String calculateProfit(long money) {
         double totalWinningMoney = 0.0;
 
         for (Reward reward : ranks.keySet()) {
             totalWinningMoney += ranks.get(reward).calculateWinningMoney();
         }
 
-        return totalWinningMoney / money;
+        double profit = totalWinningMoney / money;
+
+        return String.format(profit < 1 ? "%.2f" : "%.0f", profit);
     }
 
     public void addMatchTicket(int matchCount, boolean matchBonus) {

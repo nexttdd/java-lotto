@@ -5,11 +5,12 @@ import lotto.domain.*;
 import java.util.*;
 
 public class OutputView {
-    public static void printTickets(LottoTickets lottoTickets) {
-        for (LottoTicket lottoTicket : lottoTickets.getTickets()) {
-            System.out.println(lottoTicket);
-        }
-        System.out.println();
+    public static void printTickets(LottoMoney lottoMoney, LottoTickets lottoTickets) {
+        System.out.println("\n수동으로 " + lottoMoney.getManualTicketCount() + "장,"
+                + "자동으로 " + lottoMoney.getAutoTicketCount() + "개를 구매했습니다.");
+
+        lottoTickets.getTickets()
+                .forEach(System.out::println);
     }
 
     public static void printRanks(Ranks ranks) {
@@ -36,10 +37,10 @@ public class OutputView {
         System.out.println(result + "(" + reward.getWinningMoney() + "원)- " + ticketCount + "개");
     }
 
-    public static void printProfit(double profit) {
+    public static void printProfit(String profit) {
         String result = "총 수익률은 " + profit + "입니다.";
 
-        if (profit < 0) {
+        if (Double.parseDouble(profit) < 1) {
             result += "(기준이 1이기 때문에 결과적으로 손해라는 의미임)";
         }
 

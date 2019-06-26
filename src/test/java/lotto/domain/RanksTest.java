@@ -15,18 +15,33 @@ public class RanksTest {
     }
 
     @Test
-    public void 수익률_계산하기() {
+    public void 이득_수익률_계산하기() {
         //given
         int money = 5_000;
 
         //when
         Ranks ranks = new Ranks();
         ranks.addMatchTicket(3, Boolean.FALSE);
-        double profit = ranks.calculateProfit(money);
+        String profit = ranks.calculateProfit(money);
 
         //then
-        assertThat(profit).isEqualTo(1.0);
+        assertThat(profit).isEqualTo("1");
     }
+
+    @Test
+    public void 손해_수익률_계산하기() {
+        //given
+        int money = 15_000;
+
+        //when
+        Ranks ranks = new Ranks();
+        ranks.addMatchTicket(3, Boolean.FALSE);
+        String profit = ranks.calculateProfit(money);
+
+        //then
+        assertThat(profit).isEqualTo("0.33");
+    }
+
 
     @Test
     public void FIFTH_티켓_추가() {
