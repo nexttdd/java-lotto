@@ -23,7 +23,7 @@ public class LottoMoney {
     }
 
     private void checkOutOfRange(int ticketCount) {
-        if (money / TICKET_PRICE < ticketCount) {
+        if (calcTicketCount() < ticketCount) {
             throw new IllegalArgumentException("구매할 수 있는 로또 티켓 수를 초과했습니다.");
         }
     }
@@ -33,7 +33,7 @@ public class LottoMoney {
     }
 
     public int getAutoTicketCount() {
-        return (int) (money / TICKET_PRICE) - manualTicketCount;
+        return calcTicketCount() - manualTicketCount;
     }
 
     public int getManualTicketCount() {
@@ -42,5 +42,9 @@ public class LottoMoney {
 
     public boolean isNeedManualTicket() {
         return this.manualTicketCount > 0;
+    }
+
+    private int calcTicketCount() {
+        return (int) (money / TICKET_PRICE);
     }
 }

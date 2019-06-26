@@ -15,7 +15,7 @@ public class LottoGameService {
         Ranks ranks = matchLuckyNumber(luckyLotto, lottoTickets);
         OutputView.printRanks(ranks);
 
-        double profit = ranks.calculateProfit(lottoMoney.getMoney());
+        String profit = ranks.calculateProfit(lottoMoney.getMoney());
         OutputView.printProfit(profit);
     }
 

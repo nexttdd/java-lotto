@@ -18,15 +18,10 @@ public class LottoTicketMachine {
     private static LottoTickets issueAutoTickets(int numberOfTickets) {
         List<LottoTicket> tickets = new ArrayList<>();
         for (int i = 0; i < numberOfTickets; i++) {
-            tickets.add(issueOneTicket());
+            tickets.add(new LottoTicket(LottoBalls.extractNumbers(NUMBER_OF_BALLS)));
         }
 
         return new LottoTickets(tickets);
-    }
-
-    private static LottoTicket issueOneTicket() {
-        List<LottoNumber> lottoNumbers = LottoBalls.extractNumbers(NUMBER_OF_BALLS);
-        return new LottoTicket(lottoNumbers);
     }
 
     public static LottoTickets issueManualTickets(String[] numbers) {

@@ -37,10 +37,10 @@ public class OutputView {
         System.out.println(result + "(" + reward.getWinningMoney() + "원)- " + ticketCount + "개");
     }
 
-    public static void printProfit(double profit) {
-        String result = "총 수익률은 " + String.format("%.2f", profit) + "입니다.";
+    public static void printProfit(String profit) {
+        String result = "총 수익률은 " + profit + "입니다.";
 
-        if (profit < 0) {
+        if (Double.parseDouble(profit) < 1) {
             result += "(기준이 1이기 때문에 결과적으로 손해라는 의미임)";
         }
 
