@@ -6,6 +6,10 @@ public class WinningLotto {
     private LottoNumber bonusNumber;
 
     public WinningLotto(LottoSet winningLotto, LottoNumber bonusNumber) {
+        if(winningLotto.isMatchNumber(bonusNumber)) {
+            throw new IllegalArgumentException("당첨번호와 보너스번호 중복입니다.");
+        }
+
         this.winningLotto = winningLotto;
         this.bonusNumber = bonusNumber;
     }

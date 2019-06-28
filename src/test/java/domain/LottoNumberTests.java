@@ -3,6 +3,7 @@ package domain;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class LottoNumberTests {
 
@@ -23,5 +24,15 @@ public class LottoNumberTests {
 
         // then
         assertEquals(new LottoNumber(number), new LottoNumber(number));
+    }
+
+    @Test
+    public void 숫자_문자열로_로또_번호를_생성가능하다() {
+        // given
+        int number = 20;
+        LottoNumber lottoNumber = new LottoNumber(String.valueOf(number));
+
+        // then
+        assertTrue(lottoNumber.equals(new LottoNumber(number)));
     }
 }

@@ -10,7 +10,7 @@ public class LottoGame {
     private int tryNo;
 
     public LottoGame(LottoMoney lottoMoney) {
-        tryNo = lottoMoney.getTryNo(TICKET_PRICE);
+        tryNo = lottoMoney.getTryNo();
     }
 
     public List<LottoSet> start() {

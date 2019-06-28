@@ -11,7 +11,7 @@ public class LottoMoney {
         this.money = money;
     }
 
-    public int getTryNo(int ticketPrice) {
-        return money / ticketPrice;
+    public int getTryNo() {
+        return money / LottoGame.TICKET_PRICE;
     }
 }
