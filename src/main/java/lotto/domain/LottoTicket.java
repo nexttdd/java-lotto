@@ -16,6 +16,10 @@ public class LottoTicket {
     }
 
     public LottoTicket(String[] ticketNumbers) {
+        if (ticketNumbers.length != 6) {
+            throw new IllegalArgumentException("we need six numbers");
+        }
+
         numbers = Arrays.stream(ticketNumbers)
                 .mapToInt(Integer::parseInt)
                 .mapToObj(LottoNumber::new)

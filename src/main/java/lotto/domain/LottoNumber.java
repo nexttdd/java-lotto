@@ -10,7 +10,7 @@ public class LottoNumber implements Comparable<LottoNumber> {
 
     private void checkOutOfRange(int number) {
         if (LottoBalls.MIN_NUMBER > number || LottoBalls.MAX_NUMBER < number) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("outOfRange. check Number : " + number);
         }
     }
 

@@ -47,7 +47,7 @@ public class OutputView {
         System.out.println(result);
     }
 
-    private static void sortRewardOrdered(List<Reward> rewards) {
+    public static void sortRewardOrdered(List<Reward> rewards) {
         rewards.sort((o1, o2) -> {
             if (o1.getMatchCount() > o2.getMatchCount()) {
                 return 1;
