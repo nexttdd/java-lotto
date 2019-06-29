@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertFalse;
 
 
-public class LottoSetTests {
+public class LottoSetTest {
 
     private LottoSet lottoSet;
 

@@ -6,9 +6,9 @@ public class LottoResult {
     private final int TOTAL_PRICE;
     private RankCount rankCount = new RankCount();
 
-    public LottoResult(List<LottoSet> lottoPaper, WinningLotto winningLotto) {
-        this.TOTAL_PRICE = lottoPaper.size() * LottoGame.TICKET_PRICE;
-        calculateLottoRankCount(lottoPaper, winningLotto);
+    public LottoResult(LottoPaper lottoPaper, WinningLotto winningLotto) {
+        this.TOTAL_PRICE = lottoPaper.getLottoSetsSize() * LottoGame.TICKET_PRICE;
+        calculateLottoRankCount(lottoPaper.getLottoSets(), winningLotto);
     }
 
     private void calculateLottoRankCount(List<LottoSet> lottoPaper, WinningLotto winningLotto) {
