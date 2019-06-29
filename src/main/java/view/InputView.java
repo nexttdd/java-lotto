@@ -25,12 +25,14 @@ public class InputView {
 
     public static List<LottoSet> inputManualAutoSets(int number) {
         List<LottoSet> lottoSets = new ArrayList<>();
+        if (number == 0) {
+            return lottoSets;
+        }
         Scanner sc = new Scanner(System.in);
-
         System.out.println("수동으로 구매할 번호를 입력해 주세요.");
 
         for (int i = 0; i < number; i++) {
-            lottoSets.add(new LottoSet(Arrays.stream(new Scanner(System.in).nextLine().split(", "))
+            lottoSets.add(new LottoSet(Arrays.stream(sc.nextLine().split(", "))
                     .map(LottoNumber::new)
                     .collect(Collectors.toList())));
         }
