@@ -1,3 +1,5 @@
+package main;
+
 import view.InputVIew;
 import view.ResultView;
 import vo.*;
