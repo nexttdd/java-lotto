@@ -16,6 +16,10 @@ public class LottoTicket {
     }
 
     public LottoTicket(String[] ticketNumbers) {
+        if (ticketNumbers.length != 6) {
+            throw new IllegalArgumentException("we need six numbers");
+        }
+
         numbers = Arrays.stream(ticketNumbers)
                 .mapToInt(Integer::parseInt)
                 .mapToObj(LottoNumber::new)
@@ -34,7 +38,7 @@ public class LottoTicket {
     }
 
     private void checkArguments(String[] ticketNumbers, String bonusNumber) {
-        if (ticketNumbers.length < 6) {
+        if (ticketNumbers.length < Const.NUMBER_OF_BALLS) {
             throw new IllegalArgumentException("지난주 당첨번호 입력이 잘못됐습니다.");
         }
 

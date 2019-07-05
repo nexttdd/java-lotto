@@ -31,4 +31,6 @@ public class Rank {
     public int getTicketCount() {
         return ticketCount;
     }
+
+    public int getWinningMoney() { return reward.getWinningMoney(); }
 }

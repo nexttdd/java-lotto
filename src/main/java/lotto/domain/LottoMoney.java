@@ -47,4 +47,11 @@ public class LottoMoney {
     private int calcTicketCount() {
         return (int) (money / TICKET_PRICE);
     }
+
+    public void buyManualTicket(String[] manualNumber) {
+        if (manualNumber[0].trim().equals("")) {
+            return;
+        }
+        buyManualTicket(manualNumber.length);
+    }
 }

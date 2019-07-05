@@ -6,14 +6,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LottoBalls {
-    static final int MIN_NUMBER = 1;
-    static final int MAX_NUMBER = 45;
-
     private static final List<Integer> balls;
 
     static {
         balls = new ArrayList<>();
-        for (int i = 1; i <= MAX_NUMBER; i++) {
+        for (int i = Const.MIN_NUMBER; i <= Const.MAX_NUMBER; i++) {
             balls.add(i);
         }
     }

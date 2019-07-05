@@ -38,6 +38,10 @@ public class Ranks {
     }
 
     public Map<Reward, Rank> getRanks() {
-        return ranks;
+        return Collections.unmodifiableMap(ranks);
+    }
+
+    public Rank getRank(Reward reward) {
+        return ranks.get(reward);
     }
 }
