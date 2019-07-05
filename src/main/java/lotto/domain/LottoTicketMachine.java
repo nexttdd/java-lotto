@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoTicketMachine {
-    private static final int NUMBER_OF_BALLS = 6;
 
     public static LottoTickets issueTickets(LottoMoney lottoMoney, String[] manualNumbers) {
         if (lottoMoney.isNeedManualTicket()) {
@@ -18,7 +17,7 @@ public class LottoTicketMachine {
     private static LottoTickets issueAutoTickets(int numberOfTickets) {
         List<LottoTicket> tickets = new ArrayList<>();
         for (int i = 0; i < numberOfTickets; i++) {
-            tickets.add(new LottoTicket(LottoBalls.extractNumbers(NUMBER_OF_BALLS)));
+            tickets.add(new LottoTicket(LottoBalls.extractNumbers(Const.NUMBER_OF_BALLS)));
         }
 
         return new LottoTickets(tickets);

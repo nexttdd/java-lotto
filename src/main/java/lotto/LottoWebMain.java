@@ -59,7 +59,7 @@ public class LottoWebMain {
             String profit = ranks.calculateProfit(lottoMoney.getMoney());
 
             Map<String, Object> model = new HashMap<>();
-            ResultViewDto dto = new ResultViewDto(ranks);
+            ResultViewDto dto = ResultViewDto.of(ranks);
 
             model.put("ranks", dto.getResult());
             model.put("profit", profit);

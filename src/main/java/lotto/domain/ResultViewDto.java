@@ -10,29 +10,16 @@ import java.util.List;
 public class ResultViewDto {
     private List<String> result;
 
-    public ResultViewDto(Ranks ranks) {
+    private ResultViewDto(Ranks ranks) {
         this.result = new ArrayList<>();
 
         List<Reward> rewards = Arrays.asList(Reward.values());
         OutputView.sortRewardOrdered(rewards);
-        rewards.forEach(reward -> convertToResultString(reward, ranks.getRank(reward)));
+        rewards.forEach(reward -> result.add(OutputView.printRank(reward, ranks.getRank(reward))));
     }
 
-    private void convertToResultString(Reward reward, Rank rank) {
-        if (Reward.MISS.equals(reward)) return;
-
-        String resultString = rank.getMatchCount() + "개 일치";
-        if (Reward.SECOND.equals(reward)) {
-            resultString += ", 보너스 볼 일치";
-        }
-
-        resultString += "("
-                + rank.getWinningMoney()
-                + "원)- "
-                + rank.getTicketCount()
-                + "개";
-
-        this.result.add(resultString);
+    public static ResultViewDto of(Ranks ranks) {
+        return new ResultViewDto(ranks);
     }
 
     public List<String> getResult() {

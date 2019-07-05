@@ -21,12 +21,12 @@ public class OutputView {
         sortRewardOrdered(rewards);
 
         for (Reward reward : rewards) {
-            printRank(reward, ranks.getRanks().get(reward));
+            if (Reward.MISS.equals(reward)) continue;
+            System.out.println(printRank(reward, ranks.getRanks().get(reward)));
         }
     }
 
-    private static void printRank(Reward reward, Rank rank) {
-        if (Reward.MISS.equals(reward)) return;
+    public static String printRank(Reward reward, Rank rank) {
         int ticketCount = rank.getTicketCount();
 
         String result = reward.getMatchCount() + "개 일치";
@@ -34,7 +34,7 @@ public class OutputView {
             result += ", 보너스 볼 일치";
         }
 
-        System.out.println(result + "(" + reward.getWinningMoney() + "원)- " + ticketCount + "개");
+        return result + "(" + reward.getWinningMoney() + "원)- " + ticketCount + "개";
     }
 
     public static void printProfit(String profit) {
