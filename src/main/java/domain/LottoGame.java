@@ -4,17 +4,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class LottoGame {
-
-    public static final int TICKET_PRICE = 1000;
+public final class LottoGame {
     private int tryNo;
 
-    public LottoGame(LottoMoney lottoMoney, int manualBuyNumber) {
-        if(lottoMoney.getTryNo() < manualBuyNumber) {
+    public LottoGame(int lottoMoney, int manualBuyNumber) {
+        LottoMoney gameMoney = new LottoMoney(lottoMoney);
+        if(gameMoney.calculateTryNo() < manualBuyNumber) {
             throw new IllegalArgumentException("수동구매 갯수가 구입금액을 초과합니다.");
         }
 
-        tryNo = lottoMoney.getTryNo() - manualBuyNumber;
+        tryNo = gameMoney.calculateTryNo() - manualBuyNumber;
     }
 
     public List<LottoSet> start() {

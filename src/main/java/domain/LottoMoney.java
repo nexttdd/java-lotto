@@ -1,17 +1,17 @@
 package domain;
 
-public class LottoMoney {
-
-    private int money;
+public final class LottoMoney {
+    public static final int TICKET_PRICE = 1000;
+    private final int money;
 
     public LottoMoney(int money) {
-        if (money < LottoGame.TICKET_PRICE) {
+        if (money < TICKET_PRICE) {
             throw new IllegalArgumentException();
         }
         this.money = money;
     }
 
-    public int getTryNo() {
-        return money / LottoGame.TICKET_PRICE;
+    public int calculateTryNo() {
+        return money / TICKET_PRICE;
     }
 }
